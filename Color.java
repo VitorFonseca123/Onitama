@@ -1,17 +1,35 @@
+package onitama;
+import java.io.Serializable;
+
 /**
- * Enum contendo todas as possíveis cores do jogo
+ *
+ * @author vitor
  */
-public enum Color {
-    /**
-     * Representa vermelho
-     */
+public enum Color implements Serializable, Comparable<Color>{
     RED,
-    /**
-     * Representa azul
-     */
     BLUE,
-    /**
-     * Representa nenhuma cor
-     */
-    NONE,
+    NONE;
+    
+   // Constantes BLUE, RED e NONE
+    public static final Color Blue = Color.BLUE;
+    public static final Color Red = Color.RED;
+    public static final Color None = Color.NONE;
+
+    /*public static Color[] values() {
+        return new Color[]{RED, NONE, BLUE};
+    }*/
+    
+    static Color ValueOf(String name){
+        if(name==null){
+            throw new NullPointerException("Name não deve ser nulo");
+        }
+         for (Color color : Color.values()) {
+              if (color.name().equalsIgnoreCase(name)) {
+                return color;
+            }
+         }
+        
+          throw new IllegalArgumentException("Nenhum enum com o nome " + Color.class.getName() + "." + name);
+    }
+
 }

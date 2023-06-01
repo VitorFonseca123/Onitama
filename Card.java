@@ -1,46 +1,64 @@
+package onitama;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 /**
- * Classe que contém informações das cartas
+ *
+ * @author vitor
  */
 public class Card {
-    /**
-     * Construtor que define os principais atributos de uma cara
-     * @param name Nome da carta
-     * @param color Cor da carta
-     * @param positions Todas as posições relativas de movimento
-     */
-    public Card(String name, Color color, Position[] positions) {
-
+    private String name;
+    private Color color;
+    private Position[] position;
+    
+    private static final int TOTAL_CARDS = 8;
+    private static final int CARDS_IN_GAME = 5;
+    
+    public Card(String name, Color color, Position[] position) {
+        this.name = name;
+        this.color = color;
+        this.position = position;
     }
 
-    /**
-     * Método que devolve o nome da carta
-     * @return String que contém o nome da carta
-     */
     public String getName() {
-        return null;
+        return name;
     }
 
-    /**
-     * Método que devolve a cor da carta
-     * @return Enum Color que contém a cor da carta
-     */
     public Color getColor() {
-        return null;
+        return color;
     }
 
-    /**
-     * Método que devolve todas as possíveis posições relativas de movimento.
-     * A posição atual da peça é o ponto de origem (0,0). Uma carta possui as possíveis posições de movimento em relação ao ponto de origem.
-     * @return Um array de Position contendo todas as possíveis posições de movimento em relação ao ponto de origem
-     */
-    public Position[] getPositions() {
-        return null;
+    public Position[] getPosition() {
+        return position;
     }
-
-    /**
-     * Método que cria todas as cartas do jogo, embaralha-as e devolve as 5 que serão utilizadas na partida.
-     * @return Vetor de cartas com todas as cartas do jogo
-     */
-    public static Card[] createCards() {
-        return null;
-    }}
+    
+     public static Card[] createCards() {
+         
+         Position[] Tiger = {new Position(-2, 0), new Position(1, 0)};
+         Position[] Dragon = {new Position(1, -2), new Position(1, 2), new Position(1, -1),  new Position(1, 1)};
+         Position[] Frogg = {new Position(1, 1), new Position(-1, -1), new Position(-2, 0)};
+         Position[] Rabbit = {new Position(-1, -1), new Position(-1, 1), new Position(2, 0)};
+         Position[] Crab = {new Position(-1, 0), new Position(2, 0), new Position(-2, 0)};
+         Position[] Elephant = {new Position(-1, 0), new Position(1, 0), new Position(-1, -1), new Position(-1, 1)};
+         Position[] Goose = {new Position(0, -1), new Position(-1, -1), new Position(0, 1),  new Position(1, 1)};
+         Position[] Rooster = {new Position(0, -1), new Position(1, -1), new Position(0, 1),  new Position(-1, 1)};
+         
+         Card[] cards = new Card[]{
+             new Card("Tiger",Color.RED ,Tiger),
+             new Card("Dragon",Color.BLUE ,Dragon),
+             new Card("Frogg",Color.RED ,Frogg),
+             new Card("Rabbit", Color.BLUE, Rabbit),
+             new Card("Crab", Color.RED, Crab),
+             new Card("Elephant", Color.BLUE, Elephant),
+             new Card("Goose", Color.RED, Goose),
+             new Card("Rooster", Color.BLUE, Rooster),  
+         };
+         List<Card> allCards = Arrays.asList(cards);
+         Collections.shuffle(allCards);
+         //allCards.toArray(cards);
+         
+         return  allCards.subList(0, CARDS_IN_GAME).toArray(new Card[CARDS_IN_GAME]);
+     }
+    
+}
