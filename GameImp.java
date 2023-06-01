@@ -17,7 +17,7 @@ public class GameImp {
     Color getSpotColor(Position position){
         Board board = new Board();
         Spot[][] spot = board.getSpot();
-        return spot[position.getRow()][position.getCol()].getColor();//pode criar um get color no spot????
+        return spot[position.getRow()][position.getCol()].getColor();
     }
         
     

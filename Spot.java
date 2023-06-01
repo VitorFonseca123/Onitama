@@ -31,6 +31,10 @@ public class Spot {
     public Position getPos() {
         return pos;
     }
+
+    public Color getColor() {
+        return color;
+    }
     
     public boolean isValid(){
         if(piece == null) return false; //|| piece.getColor() != color
