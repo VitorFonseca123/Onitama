@@ -1,4 +1,3 @@
-
 package onitama;
 
 /**
@@ -15,8 +14,12 @@ public class GameImp {
         this.bluePlayer = bluePlayer;
         this.tableCard = tableCard;
     }
-    
-    Piece getPiece​(Position position){
-        
+    Color getSpotColor(Position position){
+        Board board = new Board();
+        Spot[][] spot = board.getSpot();
+        return spot[position.getRow()][position.getCol()].getColor();//pode criar um get color no spot????
     }
+        
+    
+    
 }
