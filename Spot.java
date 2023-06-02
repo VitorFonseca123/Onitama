@@ -36,14 +36,7 @@ public class Spot {
         return color;
     }
     
-    public boolean isValid(){
-        if(piece == null) return false; //|| piece.getColor() != color
-        
-        int row = pos.getRow();
-        int col = pos.getCol();
-        if(row < 0 || row > 4 || col < 0 || col > 4) return false;
-        return true;
-    }
+   
     protected void occupySpot​(Piece piece){
         
         

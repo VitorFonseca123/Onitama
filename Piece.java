@@ -19,9 +19,6 @@ public class Piece {
         return color;
     }
     
-    boolean isAlive(){
-        return this.isAlive;
-    }
     boolean isMaster(){
         return this.isMaster;
     }
