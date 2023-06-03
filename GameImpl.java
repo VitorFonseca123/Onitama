@@ -17,17 +17,31 @@ public class GameImpl implements Game{
         this.redPlayer = "";
         this.bluePlayer = ""; //deixar sem nada ou construir com nome vazio?
         this.deck = Card.createCards();
+
         Card[] redPlayerCards = drawCardsFromDeck(2);
         RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
+
         Card[] bluePlayerCards = drawCardsFromDeck(2);
         BluePlayer = new Player(this.bluePlayer, Color.Blue, bluePlayerCards);
-        this.TableCard = deck.subList(0, 1);
+
+        List<Card> draw = Arrays.asList(deck);
+        this.TableCard = draw.get(0);
+
         board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer) {
         this.redPlayer = redPlayer;
         this.bluePlayer = bluePlayer;
         this.deck = Card.createCards();
+
+        Card[] redPlayerCards = drawCardsFromDeck(2);
+        RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
+
+        Card[] bluePlayerCards = drawCardsFromDeck(2);
+        BluePlayer = new Player(this.bluePlayer, Color.Blue, bluePlayerCards);
+
+        List<Card> draw = Arrays.asList(deck);
+        this.TableCard = draw.get(0);
         board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer, Card[] newDeck) {
@@ -36,13 +50,25 @@ public class GameImpl implements Game{
         List<Card> allCards = Arrays.asList(newDeck);
         Collections.shuffle(allCards);
         this.deck = allCards.subList(0, 5).toArray(new Card[5]);
+
+        Card[] redPlayerCards = drawCardsFromDeck(2);
+        RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
+
+        Card[] bluePlayerCards = drawCardsFromDeck(2);
+        BluePlayer = new Player(this.bluePlayer, Color.Blue, bluePlayerCards);
+
+        List<Card> draw = Arrays.asList(deck);
+        this.TableCard = draw.get(0);
         board = new Board();
     }
     private Card[] drawCardsFromDeck(int numCards) {
-        List<Card> draw = deck.subList(0, numCards);
-        Card[] cardArray = draw.toArray(new Card[0]);
-        deck.removeAll(draw);
+        List<Card> draw = Arrays.asList(deck);
+        List<Card> subList = draw.subList(0, numCards);
+        Card[] cardArray = subList.toArray(new Card[0]);
+        draw.removeAll(subList);
+        deck = draw.toArray(new Card[0]);
         return cardArray;
+
     }
     
     public Color getSpotColor(Position position){
