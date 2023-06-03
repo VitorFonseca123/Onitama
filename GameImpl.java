@@ -9,11 +9,19 @@ public class GameImpl implements Game{
     private String bluePlayer;
     public static Card[] deck; //se eu deixar público posso acessar o deck de fora, mas é ideal?
     private Board board;
+    public Card TableCard;
+    private Player RedPlayer;
+    private Player BluePlayer;
   
     public GameImpl() {
         this.redPlayer = "";
         this.bluePlayer = ""; //deixar sem nada ou construir com nome vazio?
         this.deck = Card.createCards();
+        Card[] redPlayerCards = drawCardsFromDeck(2);
+        RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
+        Card[] bluePlayerCards = drawCardsFromDeck(2);
+        BluePlayer = new Player(this.bluePlayer, Color.Blue, bluePlayerCards);
+        this.TableCard = deck.subList(0, 1);
         board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer) {
@@ -30,7 +38,12 @@ public class GameImpl implements Game{
         this.deck = allCards.subList(0, 5).toArray(new Card[5]);
         board = new Board();
     }
-    
+    private Card[] drawCardsFromDeck(int numCards) {
+        List<Card> draw = deck.subList(0, numCards);
+        Card[] cardArray = draw.toArray(new Card[0]);
+        deck.removeAll(draw);
+        return cardArray;
+    }
     
     public Color getSpotColor(Position position){
        
