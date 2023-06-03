@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class GameImpl {
+public class GameImpl implements Game{
     private String redPlayer;
     private String bluePlayer;
-    private Card[] deck;
+    public static Card[] deck; //se eu deixar público posso acessar o deck de fora, mas é ideal?
     private Board board;
   
     public GameImpl() {
@@ -32,14 +32,31 @@ public class GameImpl {
     }
     
     
-    Color getSpotColor(Position position){
+    public Color getSpotColor(Position position){
        
         Spot[][] spot = board.getSpot();
         return spot[position.getRow()][position.getCol()].getColor();
     }
     
-    Piece getPiece(Position position){
+    public Piece getPiece(Position position){
         Spot[][] spot = board.getSpot();
         return spot[position.getRow()][position.getCol()].getPiece();
+    }
+    public void getTableCard(){ //mudar para tipo Card
+        for(Card card: deck){
+            //pensei em olhar as cartas do deck e as cartas nas mãos do player, mas eu n tenho o objeto dos players
+        }
+    }
+    public Player getRedPlayer(){
+
+    }
+    public Player getBluePlayer(){
+
+    }
+    void makeMove(Piece piece, Card card, Position position) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
+
+    }
+    boolean checkVictory(Color color){
+
     }
 }

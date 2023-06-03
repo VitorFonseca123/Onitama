@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- *
- * @author vitor
- */
 public class Player {
     private String name;
     private Color pieceColor;
@@ -41,12 +37,16 @@ public class Player {
         return cards;
     }
     
-    protected void swapCard​(Card oldCard, Card newCard){
+    protected void swapCard(Card oldCard, Card newCard) throws InvalidCardException{
            List<Card> Hand = new ArrayList<>(Arrays.asList(cards));
+           if(!Hand.contains(oldCard)) throw new InvalidCardException("OldCard não está na mão do jogador");
+           if (!Hand.contains(newCard)) throw new InvalidCardException("NewCard já está na mão do jogador");
 
-          if(Hand.contains(oldCard) && !Hand.contains(newCard)){
+           //como eu sei a carta da mesa?
+
+         /* if(Hand.contains(oldCard) && !Hand.contains(newCard)){
               
-          }
+          }*/
     }
     
     
