@@ -17,16 +17,7 @@ public class GameImpl implements Game{
         this.redPlayer = "";
         this.bluePlayer = ""; //deixar sem nada ou construir com nome vazio?
         this.deck = Card.createCards();
-
-        Card[] redPlayerCards = drawCardsFromDeck(2);
-        RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
-
-        Card[] bluePlayerCards = drawCardsFromDeck(2);
-        BluePlayer = new Player(this.bluePlayer, Color.Blue, bluePlayerCards);
-
-        List<Card> draw = Arrays.asList(deck);
-        this.TableCard = draw.get(0);
-
+        distributeCards();
         board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer) {
@@ -34,14 +25,7 @@ public class GameImpl implements Game{
         this.bluePlayer = bluePlayer;
         this.deck = Card.createCards();
 
-        Card[] redPlayerCards = drawCardsFromDeck(2);
-        RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
-
-        Card[] bluePlayerCards = drawCardsFromDeck(2);
-        BluePlayer = new Player(this.bluePlayer, Color.Blue, bluePlayerCards);
-
-        List<Card> draw = Arrays.asList(deck);
-        this.TableCard = draw.get(0);
+        distributeCards();
         board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer, Card[] newDeck) {
@@ -51,6 +35,10 @@ public class GameImpl implements Game{
         Collections.shuffle(allCards);
         this.deck = allCards.subList(0, 5).toArray(new Card[5]);
 
+        distributeCards();
+        board = new Board();
+    }
+    private void distributeCards(){
         Card[] redPlayerCards = drawCardsFromDeck(2);
         RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
 
@@ -59,7 +47,6 @@ public class GameImpl implements Game{
 
         List<Card> draw = Arrays.asList(deck);
         this.TableCard = draw.get(0);
-        board = new Board();
     }
     private Card[] drawCardsFromDeck(int numCards) {
         List<Card> draw = Arrays.asList(deck);
