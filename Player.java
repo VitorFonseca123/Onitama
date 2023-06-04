@@ -41,12 +41,13 @@ public class Player {
            List<Card> Hand = new ArrayList<>(Arrays.asList(cards));
            if(!Hand.contains(oldCard)) throw new InvalidCardException("OldCard não está na mão do jogador");
            if (!Hand.contains(newCard)) throw new InvalidCardException("NewCard já está na mão do jogador");
+           if(!GameImpl.TableCard.equals(newCard)) throw new InvalidCardException("NewCard não é a carta da mesa");
 
-           //como eu sei a carta da mesa?
+           int index = Hand.indexOf(oldCard);
+           Hand.set(index, newCard);
+           GameImpl.TableCard = oldCard;
+           cards = Hand.toArray(new Card[Hand.size()]);
 
-         /* if(Hand.contains(oldCard) && !Hand.contains(newCard)){
-              
-          }*/
     }
     
     

@@ -9,23 +9,25 @@ public class GameImpl implements Game{
     private String bluePlayer;
     public static Card[] deck; //se eu deixar público posso acessar o deck de fora, mas é ideal?
     private Board board;
-    public Card TableCard;
+    public static Card TableCard;
     private Player RedPlayer;
     private Player BluePlayer;
+    private boolean Turn; //false=red,true = blue;
   
     public GameImpl() {
         this.redPlayer = "";
         this.bluePlayer = ""; //deixar sem nada ou construir com nome vazio?
         this.deck = Card.createCards();
         distributeCards();
+        if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer) {
         this.redPlayer = redPlayer;
         this.bluePlayer = bluePlayer;
         this.deck = Card.createCards();
-
         distributeCards();
+        if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer, Card[] newDeck) {
@@ -34,8 +36,8 @@ public class GameImpl implements Game{
         List<Card> allCards = Arrays.asList(newDeck);
         Collections.shuffle(allCards);
         this.deck = allCards.subList(0, 5).toArray(new Card[5]);
-
         distributeCards();
+        if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
     }
     private void distributeCards(){
@@ -55,7 +57,6 @@ public class GameImpl implements Game{
         draw.removeAll(subList);
         deck = draw.toArray(new Card[0]);
         return cardArray;
-
     }
     
     public Color getSpotColor(Position position){
