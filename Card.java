@@ -55,7 +55,7 @@ public class Card {
          Collections.shuffle(allCards);
          //allCards.toArray(cards);
          
-         return  allCards.subList(0, CARDS_IN_GAME).toArray(new Card[CARDS_IN_GAME]);
+         return  allCards.subList(0, CARDS_IN_GAME-1).toArray(new Card[CARDS_IN_GAME]);
      }
     
 }

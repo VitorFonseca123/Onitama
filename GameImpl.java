@@ -50,7 +50,7 @@ public class GameImpl implements Game{
     }
     private Card[] drawCardsFromDeck(int numCards) {
         List<Card> draw = Arrays.asList(deck);
-        List<Card> subList = draw.subList(0, numCards);
+        List<Card> subList = draw.subList(0, numCards-1);
         Card[] cardArray = subList.toArray(new Card[0]);
         draw.removeAll(subList);
         deck = draw.toArray(new Card[0]);
@@ -68,21 +68,20 @@ public class GameImpl implements Game{
         Spot[][] spot = board.getSpot();
         return spot[position.getRow()][position.getCol()].getPiece();
     }
-    public void getTableCard(){ //mudar para tipo Card
-        for(Card card: deck){
-            //pensei em olhar as cartas do deck e as cartas nas mãos do player, mas eu n tenho o objeto dos players
-        }
+    public Card getTableCard() {
+        return TableCard;
     }
-    public Player getRedPlayer(){
 
+    public Player getRedPlayer(){
+        return this.RedPlayer;
     }
     public Player getBluePlayer(){
+        return this.BluePlayer;
+    }
+   public void makeMove(Piece piece, Card card, Position position) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
 
     }
-    void makeMove(Piece piece, Card card, Position position) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
-
-    }
-    boolean checkVictory(Color color){
+    public boolean checkVictory(Color color){
 
     }
 }
