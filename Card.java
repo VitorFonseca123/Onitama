@@ -3,10 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-/**
- *
- * @author vitor
- */
+
 public class Card {
     private String name;
     private Color color;
@@ -58,7 +55,7 @@ public class Card {
          Collections.shuffle(allCards);
          //allCards.toArray(cards);
          
-         return  allCards.subList(0, CARDS_IN_GAME).toArray(new Card[CARDS_IN_GAME]);
+         return  allCards.subList(0, CARDS_IN_GAME-1).toArray(new Card[CARDS_IN_GAME]);
      }
     
 }

@@ -14,10 +14,6 @@ public enum Color implements Serializable, Comparable<Color>{
     public static final Color Blue = Color.BLUE;
     public static final Color Red = Color.RED;
     public static final Color None = Color.NONE;
-
-    /*public static Color[] values() {
-        return new Color[]{RED, NONE, BLUE};
-    }*/
     
     static Color ValueOf(String name){
         if(name==null){
