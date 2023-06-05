@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameImpl implements Game{
-    private String redPlayer;
-    private String bluePlayer;
-    public static Card[] deck; //se eu deixar público posso acessar o deck de fora, mas é ideal?
-    private Board board;
+    private final String redPlayer;
+    private final String bluePlayer;
+    public static Card[] deck;
+    private final Board board;
     public static Card TableCard;
     private Player RedPlayer;
     private Player BluePlayer;
