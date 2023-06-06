@@ -1,25 +1,28 @@
 
 package onitama;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class GameImpl implements Game{
+public class GameImpl {
     private final String redPlayer;
     private final String bluePlayer;
-    public static Card[] deck;
-    private final Board board;
-    public static Card TableCard;
+    public Card[] deck;
+    private  Board board;
+    private  Card TableCard;
     private Player RedPlayer;
     private Player BluePlayer;
     private boolean Turn; //false=red,true = blue;
+    private Piece[] RedPieces;
+    private Piece[] BluePieces;
   
     public GameImpl() {
         this.redPlayer = "";
         this.bluePlayer = ""; //deixar sem nada ou construir com nome vazio?
         this.deck = Card.createCards();
         distributeCards();
-        if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
+        //if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer) {
@@ -47,15 +50,15 @@ public class GameImpl implements Game{
         Card[] bluePlayerCards = drawCardsFromDeck(2);
         BluePlayer = new Player(this.bluePlayer, Color.Blue, bluePlayerCards);
 
-        List<Card> draw = Arrays.asList(deck);
+       List<Card> draw = Arrays.asList(deck);
         this.TableCard = draw.get(0);
     }
     private Card[] drawCardsFromDeck(int numCards) {
-        List<Card> draw = Arrays.asList(deck);
-        List<Card> subList = draw.subList(0, numCards-1);
-        Card[] cardArray = subList.toArray(new Card[0]);
+        List<Card> draw = new ArrayList<>(Arrays.asList(deck));
+        List<Card> subList = draw.subList(0, numCards);
+        Card[] cardArray = subList.toArray(new Card[subList.size()]);
         draw.removeAll(subList);
-        deck = draw.toArray(new Card[0]);
+        deck = draw.toArray(new Card[draw.size()]);
         return cardArray;
     }
     
@@ -82,7 +85,7 @@ public class GameImpl implements Game{
    public void makeMove(Piece piece, Card card, Position position) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
 
     }
-    public boolean checkVictory(Color color){
+    /*public boolean checkVictory(Color color){
 
-    }
+    }*/
 }
