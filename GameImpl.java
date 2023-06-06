@@ -21,7 +21,7 @@ public class GameImpl {
         this.redPlayer = "";
         this.bluePlayer = ""; //deixar sem nada ou construir com nome vazio?
         this.deck = Card.createCards();
-        distributeCards();
+        //distributeCards();
         //if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
     }
@@ -29,16 +29,17 @@ public class GameImpl {
         this.redPlayer = redPlayer;
         this.bluePlayer = bluePlayer;
         this.deck = Card.createCards();
-        distributeCards();
-        if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
-        board = new Board();
+        //distributeCards();
+       //if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
+        //board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer, Card[] newDeck) {
         this.redPlayer = redPlayer;
         this.bluePlayer = bluePlayer;
         List<Card> allCards = Arrays.asList(newDeck);
         Collections.shuffle(allCards);
-        this.deck = allCards.subList(0, 5).toArray(new Card[5]);
+        //this.deck = allCards.subList(0, 5).toArray(new Card[5]);
+        this.deck = newDeck;
         distributeCards();
         if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
@@ -51,7 +52,7 @@ public class GameImpl {
         BluePlayer = new Player(this.bluePlayer, Color.Blue, bluePlayerCards);
 
        List<Card> draw = Arrays.asList(deck);
-        this.TableCard = draw.get(0);
+       this.TableCard = draw.get(0);
     }
     private Card[] drawCardsFromDeck(int numCards) {
         List<Card> draw = new ArrayList<>(Arrays.asList(deck));

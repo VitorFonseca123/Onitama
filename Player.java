@@ -11,6 +11,7 @@ public class Player {
     private Card[] cards;
     private Card card1;
     private Card card2;
+    //private Card TableCard;
     
     public Player(String name, Color pieceColor, Card[] cards) {
         this.name = name;
@@ -51,6 +52,7 @@ public class Player {
                Card card = Hand.get(i);
                if(card.equals(oldCard)){
                    card = newCard;
+                   break;
                }
            }
            cards = Hand.toArray(new Card[Hand.size()]);

@@ -2,7 +2,7 @@ package onitama;
 
 
 public class Board {
-    private static Spot[][] spot;
+    private Spot[][] spot;
 
     public Board() {
         spot = new Spot[5][5];
@@ -22,7 +22,7 @@ public class Board {
         }
     }
 
-    public static Spot[][] getSpot() {
+    public Spot[][] getSpot() {
         return spot;
     }
     
