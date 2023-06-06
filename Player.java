@@ -56,5 +56,7 @@ public class Player {
                }
            }
            cards = Hand.toArray(new Card[Hand.size()]);
+           //lembrar de salvar a tablecard antes de usar esse metodo
+           //lembrar de mudar a tableCard dps de usar esse metodo
     }
 }

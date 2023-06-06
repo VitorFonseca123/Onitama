@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class GameImpl {
+public class GameImpl implements Game {
     private final String redPlayer;
     private final String bluePlayer;
     public Card[] deck;
@@ -21,17 +21,17 @@ public class GameImpl {
         this.redPlayer = "";
         this.bluePlayer = ""; //deixar sem nada ou construir com nome vazio?
         this.deck = Card.createCards();
-        //distributeCards();
-        //if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
+        distributeCards();
+        if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer) {
         this.redPlayer = redPlayer;
         this.bluePlayer = bluePlayer;
         this.deck = Card.createCards();
-        //distributeCards();
-       //if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
-        //board = new Board();
+        distributeCards();
+        if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
+        board = new Board();
     }
     public GameImpl(String redPlayer, String bluePlayer, Card[] newDeck) {
         this.redPlayer = redPlayer;
@@ -44,6 +44,11 @@ public class GameImpl {
         if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
     }
+
+    public Board getBoard() {
+        return board;
+    }
+
     private void distributeCards(){
         Card[] redPlayerCards = drawCardsFromDeck(2);
         RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
@@ -86,7 +91,26 @@ public class GameImpl {
    public void makeMove(Piece piece, Card card, Position position) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
 
     }
-    /*public boolean checkVictory(Color color){
+    public void checkVictory(Color color){//mudar pra boolean
 
-    }*/
+    }
+    public void printBoard(){
+        for(int i=0;i<5;i++){
+            for(int j=0;j<5;j++){
+                Piece p = board.getSpot()[i][j].getPiece();
+                if (p != null) {
+
+                    if((p.getColor()).equals(Color.BLUE) && p.isMaster()) System.out.print("|MB|");
+                    if((p.getColor()).equals(Color.BLUE) && !p.isMaster()) System.out.print("|B|");
+                    if((p.getColor()).equals(Color.RED) && p.isMaster()) System.out.print("|MR|");
+                    if((p.getColor()).equals(Color.RED) && !p.isMaster()) System.out.print("|R|");
+
+                } else System.out.print("|0|");
+
+
+
+            }
+            System.out.println("");
+        }
+    }
 }
