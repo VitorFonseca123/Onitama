@@ -14,8 +14,8 @@ public class GameImpl implements Game {
     private Player RedPlayer;
     private Player BluePlayer;
     private boolean Turn; //false=red,true = blue;
-    private Piece[] RedPieces;
-    private Piece[] BluePieces;
+    //private Piece[] RedPieces;
+    //private Piece[] BluePieces;
   
     public GameImpl() {
         this.redPlayer = "";
