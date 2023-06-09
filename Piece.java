@@ -8,7 +8,6 @@ package onitama;
 public class Piece {
     private Color color;
     boolean isMaster;
-    boolean isAlive;
 
     public Piece(Color color, boolean isMaster) {
         this.color = color;

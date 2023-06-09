@@ -1,18 +1,21 @@
 
 package onitama;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class GameImpl implements Game{
-    private String redPlayer;
-    private String bluePlayer;
-    public static Card[] deck; //se eu deixar público posso acessar o deck de fora, mas é ideal?
-    private Board board;
-    public static Card TableCard;
+public class GameImpl implements Game {
+    private final String redPlayer;
+    private final String bluePlayer;
+    public Card[] deck;
+    private  Board board;
+    private  Card TableCard;
     private Player RedPlayer;
     private Player BluePlayer;
     private boolean Turn; //false=red,true = blue;
+    private Piece[] RedPieces;
+    private Piece[] BluePieces;
   
     public GameImpl() {
         this.redPlayer = "";
@@ -34,12 +37,19 @@ public class GameImpl implements Game{
         this.redPlayer = redPlayer;
         this.bluePlayer = bluePlayer;
         List<Card> allCards = Arrays.asList(newDeck);
+        if(allCards.size() < 5) throw new IllegalArgumentException("Deck possuí menos que 5 cartas");
         Collections.shuffle(allCards);
-        this.deck = allCards.subList(0, 5).toArray(new Card[5]);
+        //this.deck = allCards.subList(0, 5).toArray(new Card[5]);
+        this.deck = newDeck;
         distributeCards();
         if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
     }
+
+    public Board getBoard() {
+        return board;
+    }
+
     private void distributeCards(){
         Card[] redPlayerCards = drawCardsFromDeck(2);
         RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
@@ -47,15 +57,15 @@ public class GameImpl implements Game{
         Card[] bluePlayerCards = drawCardsFromDeck(2);
         BluePlayer = new Player(this.bluePlayer, Color.Blue, bluePlayerCards);
 
-        List<Card> draw = Arrays.asList(deck);
-        this.TableCard = draw.get(0);
+       List<Card> draw = Arrays.asList(deck);
+       this.TableCard = draw.get(0);
     }
     private Card[] drawCardsFromDeck(int numCards) {
-        List<Card> draw = Arrays.asList(deck);
-        List<Card> subList = draw.subList(0, numCards-1);
-        Card[] cardArray = subList.toArray(new Card[0]);
+        List<Card> draw = new ArrayList<>(Arrays.asList(deck));
+        List<Card> subList = draw.subList(0, numCards);
+        Card[] cardArray = subList.toArray(new Card[subList.size()]);
         draw.removeAll(subList);
-        deck = draw.toArray(new Card[0]);
+        deck = draw.toArray(new Card[draw.size()]);
         return cardArray;
     }
     
@@ -82,7 +92,26 @@ public class GameImpl implements Game{
    public void makeMove(Piece piece, Card card, Position position) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
 
     }
-    public boolean checkVictory(Color color){
+    public void checkVictory(Color color){//mudar pra boolean
 
+    }
+    public void printBoard(){
+        for(int i=0;i<5;i++){
+            for(int j=0;j<5;j++){
+                Piece p = board.getSpot()[i][j].getPiece();
+                if (p != null) {
+
+                    if((p.getColor()).equals(Color.BLUE) && p.isMaster()) System.out.print("|MB|");
+                    if((p.getColor()).equals(Color.BLUE) && !p.isMaster()) System.out.print("|PB|");
+                    if((p.getColor()).equals(Color.RED) && p.isMaster()) System.out.print("|MR|");
+                    if((p.getColor()).equals(Color.RED) && !p.isMaster()) System.out.print("|PR|");
+
+                } else System.out.print("|00|");
+
+
+
+            }
+            System.out.println("");
+        }
     }
 }

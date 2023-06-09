@@ -11,6 +11,7 @@ public class Player {
     private Card[] cards;
     private Card card1;
     private Card card2;
+    //private Card TableCard;
     
     public Player(String name, Color pieceColor, Card[] cards) {
         this.name = name;
@@ -40,15 +41,22 @@ public class Player {
     protected void swapCard(Card oldCard, Card newCard) throws InvalidCardException{
            List<Card> Hand = new ArrayList<>(Arrays.asList(cards));
            if(!Hand.contains(oldCard)) throw new InvalidCardException("OldCard não está na mão do jogador");
-           if (!Hand.contains(newCard)) throw new InvalidCardException("NewCard já está na mão do jogador");
-           if(!GameImpl.TableCard.equals(newCard)) throw new InvalidCardException("NewCard não é a carta da mesa");
+           if (Hand.contains(newCard)) throw new InvalidCardException("NewCard já está na mão do jogador");
 
            int index = Hand.indexOf(oldCard);
            Hand.set(index, newCard);
-           GameImpl.TableCard = oldCard;
+           Card temp = newCard;
+           newCard = oldCard;
+           oldCard = temp;
+           for (int i = 0; i < Hand.size(); i++) {
+               Card card = Hand.get(i);
+               if(card.equals(oldCard)){
+                   card = newCard;
+                   break;
+               }
+           }
            cards = Hand.toArray(new Card[Hand.size()]);
-
+           //lembrar de salvar a tablecard antes de usar esse metodo
+           //lembrar de mudar a tableCard dps de usar esse metodo
     }
-    
-    
 }

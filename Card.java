@@ -42,20 +42,20 @@ public class Card {
          Position[] Rooster = {new Position(0, -1), new Position(1, -1), new Position(0, 1),  new Position(-1, 1)};
          
          Card[] cards = new Card[]{
-             new Card("Tiger",Color.RED ,Tiger),
-             new Card("Dragon",Color.BLUE ,Dragon),
+             new Card("Tiger",Color.BLUE ,Tiger),
+             new Card("Dragon",Color.RED ,Dragon),
              new Card("Frogg",Color.RED ,Frogg),
              new Card("Rabbit", Color.BLUE, Rabbit),
-             new Card("Crab", Color.RED, Crab),
-             new Card("Elephant", Color.BLUE, Elephant),
-             new Card("Goose", Color.RED, Goose),
-             new Card("Rooster", Color.BLUE, Rooster),  
+             new Card("Crab", Color.BLUE, Crab),
+             new Card("Elephant", Color.RED, Elephant),
+             new Card("Goose", Color.BLUE, Goose),
+             new Card("Rooster", Color.RED, Rooster),
          };
          List<Card> allCards = Arrays.asList(cards);
          Collections.shuffle(allCards);
          //allCards.toArray(cards);
          
-         return  allCards.subList(0, CARDS_IN_GAME-1).toArray(new Card[CARDS_IN_GAME]);
+         return  allCards.subList(0, CARDS_IN_GAME).toArray(new Card[CARDS_IN_GAME]);
      }
     
 }
