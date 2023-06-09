@@ -18,7 +18,15 @@ public class Onitama {
         for(int i=0;i<2;i++) System.out.println(game.getBluePlayer().getCards()[i].getName());
         game.printBoard();
 
+        Position[] Tiger = {new Position(-2, 0), new Position(1, 0)};
+        Position[] Dragon = {new Position(1, -2), new Position(1, 2), new Position(1, -1),  new Position(1, 1)};
+        Position[] Frogg = {new Position(1, 1), new Position(-1, -1), new Position(-2, 0)};
 
+        Card[] cards = new Card[]{
+                new Card("Tiger",Color.BLUE ,Tiger),
+                new Card("Dragon",Color.RED ,Dragon),
+                new Card("Frogg",Color.RED ,Frogg),};
+        GameImpl g = new GameImpl("vermelho", "azul", cards);
 
 
     }

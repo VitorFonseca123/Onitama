@@ -37,6 +37,7 @@ public class GameImpl implements Game {
         this.redPlayer = redPlayer;
         this.bluePlayer = bluePlayer;
         List<Card> allCards = Arrays.asList(newDeck);
+        if(allCards.size() < 5) throw new IllegalArgumentException("Deck possuí menos que 5 cartas");
         Collections.shuffle(allCards);
         //this.deck = allCards.subList(0, 5).toArray(new Card[5]);
         this.deck = newDeck;
@@ -101,11 +102,11 @@ public class GameImpl implements Game {
                 if (p != null) {
 
                     if((p.getColor()).equals(Color.BLUE) && p.isMaster()) System.out.print("|MB|");
-                    if((p.getColor()).equals(Color.BLUE) && !p.isMaster()) System.out.print("|B|");
+                    if((p.getColor()).equals(Color.BLUE) && !p.isMaster()) System.out.print("|PB|");
                     if((p.getColor()).equals(Color.RED) && p.isMaster()) System.out.print("|MR|");
-                    if((p.getColor()).equals(Color.RED) && !p.isMaster()) System.out.print("|R|");
+                    if((p.getColor()).equals(Color.RED) && !p.isMaster()) System.out.print("|PR|");
 
-                } else System.out.print("|0|");
+                } else System.out.print("|00|");
 
 
 
