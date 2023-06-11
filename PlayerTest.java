@@ -61,6 +61,16 @@ public class PlayerTest {
         Assert.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
+    public void testSwapCardWithSameCards2()throws InvalidCardException {
+
+        // Verifica se uma exceção InvalidCardException é lançada ao tentar realizar a troca com a carta inválida
+        assertThrows(InvalidCardException.class, () -> player.swapCard(cards[1], cards[1]));
+
+        // Verifica se as cartas do jogador permaneceram inalteradas após a tentativa de troca com uma carta inválida
+        Card[] expectedCards = {cards[0], cards[1]};
+        Assert.assertArrayEquals(expectedCards, player.getCards());
+    }
+    @Test
     public void testSwapCardWithCardsInHand()throws InvalidCardException {
 
         // Verifica se uma exceção InvalidCardException é lançada ao tentar realizar a troca com a carta inválida
@@ -70,7 +80,7 @@ public class PlayerTest {
         Card[] expectedCards = {cards[0], cards[1]};
         Assert.assertArrayEquals(expectedCards, player.getCards());
     }
-    @Test
+   @Test
     public void testSwapCardWithHandContainsNewCard()throws InvalidCardException {
 
         // Verifica se uma exceção InvalidCardException é lançada ao tentar realizar a troca com a carta inválida
