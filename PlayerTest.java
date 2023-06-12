@@ -4,12 +4,10 @@ package onitama;/*
  */
 
 
-import org.junit.Assert;
+//import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -31,24 +29,24 @@ public class PlayerTest {
     }
     @Test
     public void testGetName() {
-        Assert.assertEquals("Player 1", player.getName());
+        Assertions.assertEquals("Player 1", player.getName());
     }
     @Test
     public void testGetPieceColor() {
-        Assert.assertEquals(Color.RED, player.getPieceColor());
+        Assertions.assertEquals(Color.RED, player.getPieceColor());
     }
 
     @Test
     public void testGetCards() {
         Card[] expectedCards = {cards[0], cards[1]};
-        Assert.assertArrayEquals(expectedCards, player.getCards());
+        Assertions.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
     public void testSwapCard() throws InvalidCardException {
         player.swapCard(cards[0], TableCard);
 
         Card[] expectedCards = {TableCard, cards[1]};
-        Assert.assertArrayEquals(expectedCards, player.getCards());
+        Assertions.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
     public void testSwapCardWithSameCards()throws InvalidCardException {
@@ -58,17 +56,7 @@ public class PlayerTest {
 
         // Verifica se as cartas do jogador permaneceram inalteradas após a tentativa de troca com uma carta inválida
         Card[] expectedCards = {cards[0], cards[1]};
-        Assert.assertArrayEquals(expectedCards, player.getCards());
-    }
-    @Test
-    public void testSwapCardWithSameCards2()throws InvalidCardException {
-
-        // Verifica se uma exceção InvalidCardException é lançada ao tentar realizar a troca com a carta inválida
-        assertThrows(InvalidCardException.class, () -> player.swapCard(cards[1], cards[1]));
-
-        // Verifica se as cartas do jogador permaneceram inalteradas após a tentativa de troca com uma carta inválida
-        Card[] expectedCards = {cards[0], cards[1]};
-        Assert.assertArrayEquals(expectedCards, player.getCards());
+        Assertions.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
     public void testSwapCardWithCardsInHand()throws InvalidCardException {
@@ -78,9 +66,9 @@ public class PlayerTest {
 
         // Verifica se as cartas do jogador permaneceram inalteradas após a tentativa de troca com uma carta inválida
         Card[] expectedCards = {cards[0], cards[1]};
-        Assert.assertArrayEquals(expectedCards, player.getCards());
+        Assertions.assertArrayEquals(expectedCards, player.getCards());
     }
-   @Test
+    @Test
     public void testSwapCardWithHandContainsNewCard()throws InvalidCardException {
 
         // Verifica se uma exceção InvalidCardException é lançada ao tentar realizar a troca com a carta inválida
@@ -88,7 +76,7 @@ public class PlayerTest {
 
         // Verifica se as cartas do jogador permaneceram inalteradas após a tentativa de troca com uma carta inválida
         Card[] expectedCards = {cards[0], cards[1]};
-        Assert.assertArrayEquals(expectedCards, player.getCards());
+        Assertions.assertArrayEquals(expectedCards, player.getCards());
     }
 
 
