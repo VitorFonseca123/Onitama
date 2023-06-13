@@ -27,6 +27,20 @@ public class PlayerTest {
         TableCard = new Card("Errada",Color.RED, errada);
     }
     @Test
+    public void testConstructor() {
+        String name = "John";
+        Color pieceColor = Color.RED;
+        Card card1 = new Card("Tiger", Color.BLUE, new Position[]{});
+        Card card2 = new Card("Dragon", Color.RED, new Position[]{});
+
+        Player player2 = new Player(name, pieceColor, card1, card2);
+
+       assertEquals(name, player2.getName());
+       assertEquals(pieceColor, player2.getPieceColor());
+       assertEquals(card1, player2.getCards()[0]);
+       assertEquals(card2, player2.getCards()[1]);
+    }
+    @Test
     public void testGetName() {
         Assertions.assertEquals("Player 1", player.getName());
     }

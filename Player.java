@@ -24,9 +24,7 @@ public class Player {
         this.pieceColor = pieceColor;
         this.card1 = card1;
         this.card2 = card2;
-        this.cards[0] = card1;
-        this.cards[1] = card2;
-    }
+        this.cards = new Card[]{card1, card2};}
 
     public String getName() {
         return name;

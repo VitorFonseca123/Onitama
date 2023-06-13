@@ -24,14 +24,14 @@ public class CardTest {
     @Test
     public void testCreateCards() {
 
-        Card cards[] = Card.createCards();
+        Card[] cards = Card.createCards();
         assertEquals(5, cards.length);
         Card cardVerif = null;
+        assertNotNull(cards);
         for (Card card:cards) {
-            assertNotNull(cards);
             assertNotEquals(cardVerif, card);
             cardVerif = card;
-            
+
         }
     }
 }
