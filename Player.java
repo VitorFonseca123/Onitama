@@ -11,7 +11,7 @@ public class Player {
     private Card[] cards;
     private Card card1;
     private Card card2;
-    //private Card TableCard;
+
     
     public Player(String name, Color pieceColor, Card[] cards) {
         this.name = name;
@@ -19,12 +19,14 @@ public class Player {
         this.cards = cards;
     }
 
-    /*public Player(String name, Color pieceColor, Card card1, Card card2) {
+    public Player(String name, Color pieceColor, Card card1, Card card2) {
         this.name = name;
         this.pieceColor = pieceColor;
         this.card1 = card1;
         this.card2 = card2;
-    }*/
+        this.cards[0] = card1;
+        this.cards[1] = card2;
+    }
 
     public String getName() {
         return name;

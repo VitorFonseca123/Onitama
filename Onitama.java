@@ -3,9 +3,7 @@ package onitama;
 
 public class Onitama {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
         GameImpl game = new GameImpl();
 

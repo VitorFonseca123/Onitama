@@ -1,7 +1,5 @@
-package onitama;/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
+package onitama;
+
 
 
 //import org.junit.Assert;
@@ -15,6 +13,7 @@ public class PlayerTest {
     private Player player;
     private Card[] cards;
     private Card TableCard;
+
     @BeforeEach
     public void setup() {
         Position[] Tiger = {new Position(-2, 0), new Position(1, 0)};
