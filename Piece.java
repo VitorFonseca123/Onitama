@@ -1,10 +1,7 @@
 
 package onitama;
 
-/**
- *
- * @author vitor
- */
+
 public class Piece {
     private Color color;
     boolean isMaster;
