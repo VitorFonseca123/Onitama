@@ -9,6 +9,17 @@ public class PieceTest {
     private Piece piece2 = new Piece(Color.BLUE, false);
 
     @Test
+    public void testConstructor() {
+        // Arrange
+        Color color = Color.BLUE;
+        boolean isMaster = false;
+
+        Piece piece = new Piece(color, isMaster);
+
+        Assertions.assertEquals(color, piece.getColor());
+        Assertions.assertEquals(isMaster, piece.isMaster());
+    }
+    @Test
     public void getColorTest(){
         assertEquals(Color.RED, piece1.getColor());
         assertEquals(Color.BLUE, piece2.getColor());
