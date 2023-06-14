@@ -23,7 +23,7 @@ public class Onitama {
         Card[] cards = new Card[]{
                 new Card("Tiger",Color.BLUE ,Tiger),
                 new Card("Dragon",Color.RED ,Dragon),
-                new Card("Frogg",Color.RED ,Frogg),};
+                new Card("Frog",Color.RED ,Frogg),};
         //GameImpl g = new GameImpl("vermelho", "azul", cards);
         game.getRedPlayer().swapCard(cards[1], game.getTableCard());//é pra gerar exceção
 

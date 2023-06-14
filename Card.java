@@ -44,7 +44,7 @@ public class Card {
          Card[] cards = new Card[]{
              new Card("Tiger",Color.BLUE ,Tiger),
              new Card("Dragon",Color.RED ,Dragon),
-             new Card("Frogg",Color.RED ,Frogg),
+             new Card("Frog",Color.RED ,Frogg),
              new Card("Rabbit", Color.BLUE, Rabbit),
              new Card("Crab", Color.BLUE, Crab),
              new Card("Elephant", Color.RED, Elephant),
