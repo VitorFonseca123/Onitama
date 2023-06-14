@@ -89,8 +89,8 @@ public class GameImpl implements Game {
     public Player getBluePlayer(){
         return this.BluePlayer;
     }
-   public void makeMove(Piece piece, Card card, Position position) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
-
+    void makeMove(Card card, Position cardMove, Position currentPos) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
+        
     }
     public void checkVictory(Color color){//mudar pra boolean
 

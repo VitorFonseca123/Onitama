@@ -1,9 +1,6 @@
 package onitama;
 
-/**
- *
- * @author vitor
- */
+
 public class Spot {
     private Piece piece;
     private Position pos;
