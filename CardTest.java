@@ -9,6 +9,19 @@ public class CardTest {
     Position[] positions = {new Position(-2, 0), new Position(1, 0)};
     Card card = new Card("Tiger", Color.BLUE, positions);
     @Test
+    public void testConstructor() {
+
+        String name = "Dragon";
+        Color color = Color.BLUE;
+        Position[] positions = {new Position(-2, 0), new Position(1, 0)};
+
+        Card card = new Card(name, color, positions);
+
+        Assertions.assertEquals(name, card.getName());
+        Assertions.assertEquals(color, card.getColor());
+        Assertions.assertArrayEquals(positions, card.getPosition());
+    }
+    @Test
     public void testGetName() {
         assertEquals("Tiger", card.getName());
     }
