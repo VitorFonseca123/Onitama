@@ -89,8 +89,54 @@ public class GameImpl implements Game {
     public Player getBluePlayer(){
         return this.BluePlayer;
     }
-   public void makeMove(Piece piece, Card card, Position position) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
-
+    public void makeMove(Card card, Position cardMove, Position currentPos) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
+        int col = currentPos.getCol();
+        int row = currentPos.getRow();
+        Piece temp = board.getSpot()[row][col].getPiece();
+        if (temp == null) {
+            throw new InvalidPieceException("Não há peça para mover");
+        }
+        boolean moveValid = false;
+        for (Position i : card.getPosition()) {
+            col = currentPos.getCol() + i.getCol();
+            row = currentPos.getRow() + i.getRow();
+            if (col == cardMove.getCol() && row == cardMove.getRow()) {
+                moveValid = true;
+            }
+        }
+        if (!moveValid) {
+            throw new IllegalMovementException("Movimento não descrito na carta utilizada");
+        }
+        if (cardMove.getRow() >= 5 || cardMove.getCol() >= 5) {
+            throw new IllegalMovementException("Movimento para fora do tabuleiro");
+        }
+        if (Turn) {
+            if (temp.getColor().equals(Color.RED)) {
+                throw new IncorrectTurnOrderException("Movendo peça vermelha no turno do azul");
+            }
+            if (BluePlayer.getCards()[0].equals(card) || BluePlayer.getCards()[1].equals(card)){
+            } else {
+                throw new InvalidCardException("Utilizando uma carta que não está na mão do Jogador");
+            }
+            BluePlayer.swapCard(card, TableCard);
+            TableCard = card;
+            Turn = false;
+        } else {
+            if (temp.getColor().equals(Color.BLUE)) {
+                throw new IncorrectTurnOrderException("Movendo peça azul no turno do vermelho");
+            }
+            if (RedPlayer.getCards()[0].equals(card) || RedPlayer.getCards()[1].equals(card)){
+            } else {
+                throw new InvalidCardException("Utilizando uma carta que não está na mão do Jogador");
+            }
+            RedPlayer.swapCard(card, TableCard);
+            TableCard = card;
+            Turn = true;
+        }
+        row = cardMove.getRow();
+        col = cardMove.getCol();
+        board.getSpot()[row][col].occupySpot​(board.getSpot()[currentPos.getRow()][currentPos.getCol()].getPiece());
+        board.getSpot()[currentPos.getRow()] [currentPos.getCol()].releaseSpot();
     }
     public void checkVictory(Color color){//mudar pra boolean
 
