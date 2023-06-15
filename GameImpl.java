@@ -141,13 +141,13 @@ public class GameImpl implements Game {
     public boolean checkVictory(Color color){//mudar pra boolean
         boolean advColor = true;
         if (color.equals(Color.BLUE)){
-            if (board.getSpot()[4][2].getPiece().getColor().equals(Color.BLUE)){
+            if (board.getSpot()[4][2].getPiece() != null && board.getSpot()[4][2].getPiece().getColor().equals(Color.BLUE)){
                 return true;
             }
             advColor = false;
         }
         if (color.equals(Color.RED)) {
-            if (board.getSpot()[0][2].getPiece().getColor().equals(Color.RED)) {
+            if (board.getSpot()[0][2].getPiece() != null && board.getSpot()[0][2].getPiece().getColor().equals(Color.RED)) {
                 return true;
             }
             advColor = true;
@@ -159,10 +159,10 @@ public class GameImpl implements Game {
             for (col = 0; col < 5; col++){
                 p = board.getSpot()[row][col].getPiece();
                 if (p != null && p.isMaster()){
-                    if (p.getColor().equals(Color.RED) && advColor){
+                    if (p.getColor().equals(Color.RED) && !advColor){
                         return false;
                     }
-                    if (p.getColor().equals(Color.BLUE) && !advColor){
+                    if (p.getColor().equals(Color.BLUE) && advColor){
                         return false;
                     }
                 }
