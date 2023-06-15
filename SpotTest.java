@@ -23,6 +23,36 @@ class SpotTest {
         spotBase = new Spot(pieces, positions, Color.BLUE);
     }
     @Test
+    void testConstructor_Spot() {
+        Position expectedPosition = new Position(1, 1);
+        Spot spot = new Spot(expectedPosition);
+
+        assertEquals(expectedPosition,spot.getPos());
+        assertNull(spot.getPiece());
+        assertNull(spot.getColor());
+    }
+    @Test
+    void testConstructor_SpotWithPiece() {
+        Position expectedPosition = new Position(1, 1);
+        Piece expectedPiece = new Piece(Color.BLUE, false);
+        Spot spot = new Spot(expectedPiece,expectedPosition);
+
+        assertEquals(expectedPosition,spot.getPos());
+        assertEquals(expectedPiece,spot.getPiece());
+        assertNull(spot.getColor());
+    }
+    @Test
+    void testConstructor_SpotWithBase() {
+        Position expectedPosition = new Position(1, 1);
+        Piece expectedPiece = new Piece(Color.BLUE, false);
+        Color expectedColor = Color.RED;
+        Spot spot = new Spot(expectedPiece,expectedPosition,expectedColor);
+
+        assertEquals(expectedPosition,spot.getPos());
+        assertEquals(expectedPiece,spot.getPiece());
+        assertEquals(expectedColor, spot.getColor());
+    }
+    @Test
     void getPiece() {
         Piece p = new Piece(Color.RED, true);
         assertNotEquals(p, spotPiece.getPiece());
