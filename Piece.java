@@ -4,19 +4,19 @@ package onitama;
 
 public class Piece {
     private Color color;
-    boolean isMaster;
+    boolean Master;
 
     public Piece(Color color, boolean isMaster) {
         this.color = color;
-        this.isMaster = isMaster;
+        this.Master = isMaster;
     }
 
     public Color getColor() {
         return color;
     }
     
-    boolean isMaster(){
-        return this.isMaster;
+    public boolean isMaster(){
+        return this.Master;
     }
     
 }

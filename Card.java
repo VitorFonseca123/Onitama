@@ -34,7 +34,7 @@ public class Card {
          
          Position[] Tiger = {new Position(-2, 0), new Position(1, 0)};
          Position[] Dragon = {new Position(1, -2), new Position(1, 2), new Position(1, -1),  new Position(1, 1)};
-         Position[] Frogg = {new Position(1, 1), new Position(-1, -1), new Position(-2, 0)};
+         Position[] Frog = {new Position(1, 1), new Position(-1, -1), new Position(-2, 0)};
          Position[] Rabbit = {new Position(-1, -1), new Position(-1, 1), new Position(2, 0)};
          Position[] Crab = {new Position(-1, 0), new Position(2, 0), new Position(-2, 0)};
          Position[] Elephant = {new Position(-1, 0), new Position(1, 0), new Position(-1, -1), new Position(-1, 1)};
@@ -44,7 +44,7 @@ public class Card {
          Card[] cards = new Card[]{
              new Card("Tiger",Color.BLUE ,Tiger),
              new Card("Dragon",Color.RED ,Dragon),
-             new Card("Frogg",Color.RED ,Frogg),
+             new Card("Frog",Color.RED ,Frog),
              new Card("Rabbit", Color.BLUE, Rabbit),
              new Card("Crab", Color.BLUE, Crab),
              new Card("Elephant", Color.RED, Elephant),
