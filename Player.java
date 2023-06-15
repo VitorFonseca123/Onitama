@@ -11,6 +11,8 @@ public class Player {
     private Card[] cards;
 
 
+
+
     
     public Player(String name, Color pieceColor, Card[] cards) {
         this.name = name;

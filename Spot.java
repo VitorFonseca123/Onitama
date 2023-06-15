@@ -38,8 +38,10 @@ public class Spot {
     
    
     protected void occupySpot​(Piece piece) throws IllegalMovementException {
-        if (this.piece.getColor().equals(piece.getColor())) {
-            throw new IllegalMovementException("Indo para spot ocupado por aliado");
+        if (this.piece != null){
+            if (this.piece.getColor().equals(piece.getColor())) {
+                throw new IllegalMovementException("Indo para spot ocupado por aliado");
+            }
         }
         this.piece = piece;
     }

@@ -98,8 +98,8 @@ public class GameImpl implements Game {
         }
         boolean moveValid = false;
         for (Position i : card.getPosition()) {
-            col = currentPos.getCol() + i.getCol();
-            row = currentPos.getRow() + i.getRow();
+            col = i.getCol();
+            row = i.getRow();
             if (col == cardMove.getCol() && row == cardMove.getRow()) {
                 moveValid = true;
             }
@@ -107,7 +107,9 @@ public class GameImpl implements Game {
         if (!moveValid) {
             throw new IllegalMovementException("Movimento não descrito na carta utilizada");
         }
-        if (cardMove.getRow() >= 5 || cardMove.getCol() >= 5) {
+        col = currentPos.getCol() + cardMove.getCol();
+        row = currentPos.getRow() + cardMove.getRow();
+        if (row >= 5 || col >= 5 || row < 0 || col < 0) {
             throw new IllegalMovementException("Movimento para fora do tabuleiro");
         }
         if (Turn) {
@@ -133,13 +135,40 @@ public class GameImpl implements Game {
             TableCard = card;
             Turn = true;
         }
-        row = cardMove.getRow();
-        col = cardMove.getCol();
         board.getSpot()[row][col].occupySpot​(board.getSpot()[currentPos.getRow()][currentPos.getCol()].getPiece());
         board.getSpot()[currentPos.getRow()] [currentPos.getCol()].releaseSpot();
     }
-    public void checkVictory(Color color){//mudar pra boolean
-
+    public boolean checkVictory(Color color){//mudar pra boolean
+        boolean advColor = true;
+        if (color.equals(Color.BLUE)){
+            if (board.getSpot()[4][2].getPiece().getColor().equals(Color.BLUE)){
+                return true;
+            }
+            advColor = false;
+        }
+        if (color.equals(Color.RED)) {
+            if (board.getSpot()[0][2].getPiece().getColor().equals(Color.RED)) {
+                return true;
+            }
+            advColor = true;
+        }
+        int row;
+        int col;
+        Piece p;
+        for (row = 0; row < 5; row++){
+            for (col = 0; col < 5; col++){
+                p = board.getSpot()[row][col].getPiece();
+                if (p != null && p.isMaster()){
+                    if (p.getColor().equals(Color.RED) && advColor){
+                        return false;
+                    }
+                    if (p.getColor().equals(Color.BLUE) && !advColor){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
     public void printBoard(){
         for(int i=0;i<5;i++){
