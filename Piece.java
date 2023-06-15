@@ -4,7 +4,7 @@ package onitama;
 
 public class Piece {
     private Color color;
-    boolean Master;
+    private boolean Master;
 
     public Piece(Color color, boolean isMaster) {
         this.color = color;

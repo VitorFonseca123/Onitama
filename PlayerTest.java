@@ -79,30 +79,23 @@ public class PlayerTest {
     @Test
     public void testSwapCardWithSameCards()throws InvalidCardException {
 
-        // Verifica se uma exceção InvalidCardException é lançada ao tentar realizar a troca com a carta inválida
         assertThrows(InvalidCardException.class, () -> player.swapCard(cards[0], cards[0]));
 
-        // Verifica se as cartas do jogador permaneceram inalteradas após a tentativa de troca com uma carta inválida
         Card[] expectedCards = {cards[0], cards[1]};
         Assertions.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
     public void testSwapCardWithCardsInHand()throws InvalidCardException {
-
-        // Verifica se uma exceção InvalidCardException é lançada ao tentar realizar a troca com a carta inválida
         assertThrows(InvalidCardException.class, () -> player.swapCard(cards[0], cards[1]));
 
-        // Verifica se as cartas do jogador permaneceram inalteradas após a tentativa de troca com uma carta inválida
         Card[] expectedCards = {cards[0], cards[1]};
         Assertions.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
     public void testSwapCardWithHandContainsNewCard()throws InvalidCardException {
 
-        // Verifica se uma exceção InvalidCardException é lançada ao tentar realizar a troca com a carta inválida
         assertThrows(InvalidCardException.class, () -> player.swapCard(TableCard, TableCard));
 
-        // Verifica se as cartas do jogador permaneceram inalteradas após a tentativa de troca com uma carta inválida
         Card[] expectedCards = {cards[0], cards[1]};
         Assertions.assertArrayEquals(expectedCards, player.getCards());
     }

@@ -135,7 +135,7 @@ public class GameImpl implements Game {
             TableCard = card;
             Turn = true;
         }
-        board.getSpot()[row][col].occupySpot​(board.getSpot()[currentPos.getRow()][currentPos.getCol()].getPiece());
+        board.getSpot()[row][col].occupySpot(board.getSpot()[currentPos.getRow()][currentPos.getCol()].getPiece());
         board.getSpot()[currentPos.getRow()] [currentPos.getCol()].releaseSpot();
     }
     public boolean checkVictory(Color color){//mudar pra boolean

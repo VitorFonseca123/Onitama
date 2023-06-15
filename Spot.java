@@ -1,9 +1,6 @@
 package onitama;
 
-/**
- *
- * @author vitor
- */
+
 public class Spot {
     private Piece piece;
     private Position pos;
@@ -37,7 +34,7 @@ public class Spot {
     }
     
    
-    protected void occupySpot​(Piece piece) throws IllegalMovementException {
+    protected void occupySpot(Piece piece) throws IllegalMovementException {
         if (this.piece != null){
             if (this.piece.getColor().equals(piece.getColor())) {
                 throw new IllegalMovementException("Indo para spot ocupado por aliado");
@@ -47,7 +44,7 @@ public class Spot {
     }
     protected void releaseSpot(){
         piece = null;
-        color = null;
+
     }
     
 }
