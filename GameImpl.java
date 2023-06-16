@@ -154,13 +154,15 @@ public class GameImpl implements Game {
     public boolean checkVictory(Color color){//mudar pra boolean
         boolean advColor = true;
         if (color.equals(Color.BLUE)){
-            if (board.getSpot()[4][2].getPiece() != null && board.getSpot()[4][2].getPiece().getColor().equals(Color.BLUE)){
+            Piece bluePiece =  board.getSpot()[4][2].getPiece();
+            if (bluePiece!= null && bluePiece.getColor().equals(Color.BLUE) && bluePiece.isMaster()){
                 return true;
             }
             advColor = false;
         }
         if (color.equals(Color.RED)) {
-            if (board.getSpot()[0][2].getPiece() != null && board.getSpot()[0][2].getPiece().getColor().equals(Color.RED)) {
+            Piece RedPiece =  board.getSpot()[0][2].getPiece();
+            if (RedPiece != null && RedPiece.getColor().equals(Color.RED) && RedPiece.isMaster()) {
                 return true;
             }
             advColor = true;
