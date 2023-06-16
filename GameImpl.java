@@ -90,7 +90,7 @@ public class GameImpl implements Game {
         return this.BluePlayer;
     }
     public void makeMove(Card card, Position cardMove, Position currentPos) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException{
-        int col = currentPos.getCol();
+   int col = currentPos.getCol();
         int row = currentPos.getRow();
         Piece temp = board.getSpot()[row][col].getPiece();
         if (temp == null) {
