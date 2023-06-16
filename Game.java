@@ -10,6 +10,4 @@ public interface Game {
     void makeMove(Card card, Position cardMove, Position currentPos) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException;
 
     boolean checkVictory(Color color);
-
-    void printBoard();
 }
