@@ -18,8 +18,8 @@ public class GameImpl implements Game {
     private boolean MasterRedAlive;
   
     public GameImpl() {
-        this.redPlayer = "";
-        this.bluePlayer = ""; //deixar sem nada ou construir com nome vazio?
+        this.redPlayer = null;
+        this.bluePlayer = null;
         this.deck = Card.createCards();
         distributeCards();
         if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
@@ -171,24 +171,5 @@ public class GameImpl implements Game {
         if(!advColor && !MasterRedAlive) return true;
 
         return false;
-    }
-    public void printBoard(){
-        for(int i=0;i<5;i++){
-            for(int j=0;j<5;j++){
-                Piece p = board.getSpot()[i][j].getPiece();
-                if (p != null) {
-
-                    if((p.getColor()).equals(Color.BLUE) && p.isMaster()) System.out.print("|MB|");
-                    if((p.getColor()).equals(Color.BLUE) && !p.isMaster()) System.out.print("|PB|");
-                    if((p.getColor()).equals(Color.RED) && p.isMaster()) System.out.print("|MR|");
-                    if((p.getColor()).equals(Color.RED) && !p.isMaster()) System.out.print("|PR|");
-
-                } else System.out.print("|00|");
-
-
-
-            }
-            System.out.println("");
-        }
     }
 }
