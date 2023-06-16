@@ -14,8 +14,8 @@ public class GameImpl implements Game {
     private Player RedPlayer;
     private Player BluePlayer;
     private boolean Turn; //false=red,true = blue;
-    //private Piece[] RedPieces;
-    //private Piece[] BluePieces;
+    private boolean MasterBLueAlive;
+    private boolean MasterRedAlive;
   
     public GameImpl() {
         this.redPlayer = "";
@@ -24,6 +24,8 @@ public class GameImpl implements Game {
         distributeCards();
         if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
+        this.MasterBLueAlive = true;
+        this.MasterRedAlive = true;
     }
     public GameImpl(String redPlayer, String bluePlayer) {
         this.redPlayer = redPlayer;
@@ -32,6 +34,8 @@ public class GameImpl implements Game {
         distributeCards();
         if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
+        this.MasterBLueAlive = true;
+        this.MasterRedAlive = true;
     }
     public GameImpl(String redPlayer, String bluePlayer, Card[] newDeck) {
         this.redPlayer = redPlayer;
@@ -44,6 +48,8 @@ public class GameImpl implements Game {
         distributeCards();
         if (TableCard.getColor() == Color.BLUE) Turn = true; else Turn = false;
         board = new Board();
+        this.MasterBLueAlive = true;
+        this.MasterRedAlive = true;
     }
 
     public Board getBoard() {
@@ -135,8 +141,15 @@ public class GameImpl implements Game {
             TableCard = card;
             Turn = true;
         }
+        Piece willOcuppyPiece  = board.getSpot()[row][col].getPiece();
+        if(Turn){
+            if(willOcuppyPiece != null && willOcuppyPiece.isMaster())MasterBLueAlive=false;
+        }else{
+            if(willOcuppyPiece != null && willOcuppyPiece.isMaster())MasterRedAlive=false;
+        }
         board.getSpot()[row][col].occupySpot(board.getSpot()[currentPos.getRow()][currentPos.getCol()].getPiece());
         board.getSpot()[currentPos.getRow()] [currentPos.getCol()].releaseSpot();
+
     }
     public boolean checkVictory(Color color){//mudar pra boolean
         boolean advColor = true;
@@ -152,23 +165,10 @@ public class GameImpl implements Game {
             }
             advColor = true;
         }
-        int row;
-        int col;
-        Piece p;
-        for (row = 0; row < 5; row++){
-            for (col = 0; col < 5; col++){
-                p = board.getSpot()[row][col].getPiece();
-                if (p != null && p.isMaster()){
-                    if (p.getColor().equals(Color.RED) && !advColor){
-                        return false;
-                    }
-                    if (p.getColor().equals(Color.BLUE) && advColor){
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
+        if(advColor && !MasterBLueAlive) return true;
+        if(!advColor && !MasterRedAlive) return true;
+
+        return false;
     }
     public void printBoard(){
         for(int i=0;i<5;i++){
