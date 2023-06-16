@@ -8,6 +8,8 @@ public interface Game {
     Player getRedPlayer();
     Player getBluePlayer();
     void makeMove(Card card, Position cardMove, Position currentPos) throws IncorrectTurnOrderException, IllegalMovementException, InvalidCardException, InvalidPieceException;
-    void checkVictory(Color color);
+
+    boolean checkVictory(Color color);
+
     void printBoard();
 }
