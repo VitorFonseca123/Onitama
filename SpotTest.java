@@ -1,5 +1,6 @@
 package onitama;
 
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,7 @@ class SpotTest {
     private Spot spotPiece;
     private  Spot spotBase;
 
-    @BeforeEach
+    @Before
     public void setup() {
         pieces = new Piece(Color.BLUE, false);
         piece2 = new Piece(Color.RED, false);
