@@ -158,14 +158,99 @@ class GameImplTest {
     }
 
     @Test
-    void checkVictory() {
+    void checkVictoryMasterRedKillBlue() {
         Player red = gameRed.getRedPlayer();
-        Card redCard = red.getCards()[0];
-        Player blue = gameBlue.getBluePlayer();
-        Card blueCard = blue.getCards()[0];
+        Player blue = gameRed.getBluePlayer();
 
-        gameRed.makeMove(redCard, ,new Position(4,2));
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(4,2));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
 
+        gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(0,2));
+        assertFalse(gameRed.checkVictory(blue.getPieceColor()));
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(3,2));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(0,0));
+        assertFalse(gameRed.checkVictory(blue.getPieceColor()));
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(2,2));
+        assertTrue(gameRed.checkVictory(red.getPieceColor()));
+    }
+
+    @Test
+    void checkVictoryMasterBlueKillRed() {
+        Player red = gameRed.getRedPlayer();
+        Player blue = gameRed.getBluePlayer();
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(4,2));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(0,2));
+        assertFalse(gameRed.checkVictory(blue.getPieceColor()));
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(3,2));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(1,2));
+        assertTrue(gameRed.checkVictory(blue.getPieceColor()));
+    }
+
+    @Test
+    void checkVictoryMasterRedOnTempleBlue() {
+        Player red = gameRed.getRedPlayer();
+        Player blue = gameRed.getBluePlayer();
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(4,2));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(0,2));
+        assertFalse(gameRed.checkVictory(blue.getPieceColor()));
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(3,2));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(0,1), new Position(1,2));
+        assertFalse(gameRed.checkVictory(blue.getPieceColor()));
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(2,2));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(0,1), new Position(1,3));
+        assertFalse(gameRed.checkVictory(blue.getPieceColor()));
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(1,2));
+        assertTrue(gameRed.checkVictory(red.getPieceColor()));
+    }
+
+    @Test
+    void checkVictoryMasterBlueOnTempleRed() {
+        Player red = gameRed.getRedPlayer();
+        Player blue = gameRed.getBluePlayer();
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(4,2));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(0,2));
+        assertFalse(gameRed.checkVictory(blue.getPieceColor()));
+
+        gameRed.makeMove(red.getCards()[0], new Position(0,1) ,new Position(3,2));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(1,2));
+        assertFalse(gameRed.checkVictory(blue.getPieceColor()));
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(4,4));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(2,2));
+        assertFalse(gameRed.checkVictory(blue.getPieceColor()));
+
+        gameRed.makeMove(red.getCards()[0], new Position(-1,0) ,new Position(4,0));
+        assertFalse(gameRed.checkVictory(red.getPieceColor()));
+
+        gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(3,2));
+        assertTrue(gameRed.checkVictory(blue.getPieceColor()));
     }
 
 }

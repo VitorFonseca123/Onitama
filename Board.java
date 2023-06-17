@@ -3,7 +3,13 @@ package onitama;
 
 public class Board {
     private Spot[][] spot;
-
+    /**
+     * Construtor que cria o tabuleiro inicial que será utilizado durante o jogo<br>
+     * Tabuleiro inicial:<br>
+     * &nbsp Tamanho: 5x5<br>
+     * &nbsp Peças: Azuis em cima com mestre na posição (0,2)<br>
+     * &nbsp Peças: Vermelhas em baixo com mestre na posição (4,2)<br>
+     */
     public Board() {
         spot = new Spot[5][5];
 
@@ -27,6 +33,10 @@ public class Board {
             }
         }
     }
+    /**
+     * Método que devolve o tabuleiro
+     * @return Retorna uma matriz de spots que equivale ao tabuleiro
+     */
     public Spot[][] getSpot() {
         return spot;
     }

@@ -55,7 +55,10 @@ public class GameImpl implements Game {
     public Board getBoard() {
         return board;
     }
-
+    /**
+     * Método que distribui 2 cartas para cada jogador utilizando o método drawCardsFromDeck(int numCards)
+     * e define a Carta da mesa após a compra das cartas pelos 2 jogadores
+     */
     private void distributeCards(){
         Card[] redPlayerCards = drawCardsFromDeck(2);
         RedPlayer = new Player(this.redPlayer, Color.Red, redPlayerCards);
@@ -66,6 +69,11 @@ public class GameImpl implements Game {
        List<Card> draw = Arrays.asList(deck);
        this.TableCard = draw.get(0);
     }
+    /**
+     * Método que compra cartas no deck de acordo com o parametro enviado removendo do deck as cartas compradas
+     * @param numCards Quantidade de cartas a serem compradas
+     * @return Devolve um array com o as cartas compradas do deck
+     */
     private Card[] drawCardsFromDeck(int numCards) {
         List<Card> draw = new ArrayList<>(Arrays.asList(deck));
         List<Card> subList = draw.subList(0, numCards);
@@ -172,4 +180,5 @@ public class GameImpl implements Game {
 
         return false;
     }
+
 }
