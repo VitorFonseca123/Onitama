@@ -1,14 +1,9 @@
 package onitama;
 
 
-
-//import org.junit.Assert;
+import org.junit.Assert;
 import org.junit.Before;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.Test;
 
 public class PlayerTest {
     private Player player;
@@ -37,10 +32,10 @@ public class PlayerTest {
 
         Player player2 = new Player(name, pieceColor, cards);
 
-        assertEquals(name, player2.getName());
-        assertEquals(pieceColor, player2.getPieceColor());
-        assertEquals(cards[0], player2.getCards()[0]);
-        assertEquals(cards[1], player2.getCards()[1]);
+        Assert.assertEquals(name, player2.getName());
+        Assert.assertEquals(pieceColor, player2.getPieceColor());
+        Assert.assertEquals(cards[0], player2.getCards()[0]);
+        Assert.assertEquals(cards[1], player2.getCards()[1]);
     }
     @Test
     public void testConstructor2() {
@@ -51,54 +46,54 @@ public class PlayerTest {
 
         Player player2 = new Player(name, pieceColor, card1, card2);
 
-       assertEquals(name, player2.getName());
-       assertEquals(pieceColor, player2.getPieceColor());
-       assertEquals(card1, player2.getCards()[0]);
-       assertEquals(card2, player2.getCards()[1]);
+        Assert.assertEquals(name, player2.getName());
+        Assert.assertEquals(pieceColor, player2.getPieceColor());
+        Assert.assertEquals(card1, player2.getCards()[0]);
+        Assert.assertEquals(card2, player2.getCards()[1]);
     }
     @Test
     public void testGetName() {
-        Assertions.assertEquals("Player 1", player.getName());
+        Assert.assertEquals("Player 1", player.getName());
     }
     @Test
     public void testGetPieceColor() {
-        Assertions.assertEquals(Color.RED, player.getPieceColor());
+        Assert.assertEquals(Color.RED, player.getPieceColor());
     }
 
     @Test
     public void testGetCards() {
         Card[] expectedCards = {cards[0], cards[1]};
-        Assertions.assertArrayEquals(expectedCards, player.getCards());
+        Assert.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
     public void testSwapCard() throws InvalidCardException {
         player.swapCard(cards[0], TableCard);
 
         Card[] expectedCards = {TableCard, cards[1]};
-        Assertions.assertArrayEquals(expectedCards, player.getCards());
+        Assert.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
     public void testSwapCardWithSameCards()throws InvalidCardException {
 
-        assertThrows(InvalidCardException.class, () -> player.swapCard(cards[0], cards[0]));
+        Assert.assertThrows(InvalidCardException.class, () -> player.swapCard(cards[0], cards[0]));
 
         Card[] expectedCards = {cards[0], cards[1]};
-        Assertions.assertArrayEquals(expectedCards, player.getCards());
+        Assert.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
     public void testSwapCardWithCardsInHand()throws InvalidCardException {
-        assertThrows(InvalidCardException.class, () -> player.swapCard(cards[0], cards[1]));
+        Assert.assertThrows(InvalidCardException.class, () -> player.swapCard(cards[0], cards[1]));
 
         Card[] expectedCards = {cards[0], cards[1]};
-        Assertions.assertArrayEquals(expectedCards, player.getCards());
+        Assert.assertArrayEquals(expectedCards, player.getCards());
     }
     @Test
     public void testSwapCardWithHandContainsNewCard()throws InvalidCardException {
 
-        assertThrows(InvalidCardException.class, () -> player.swapCard(TableCard, TableCard));
+        Assert.assertThrows(InvalidCardException.class, () -> player.swapCard(TableCard, TableCard));
 
         Card[] expectedCards = {cards[0], cards[1]};
-        Assertions.assertArrayEquals(expectedCards, player.getCards());
+        Assert.assertArrayEquals(expectedCards, player.getCards());
     }
 
 

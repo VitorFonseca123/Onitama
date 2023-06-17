@@ -1,8 +1,8 @@
 package onitama;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 public class PositionTest {
 
@@ -10,7 +10,7 @@ public class PositionTest {
     public void getRow() {
         Position position = new Position(2, 3);
         int row = 2;
-        assertEquals(row, position.getRow());
+        Assert.assertEquals(row, position.getRow());
 
     }
 
@@ -18,7 +18,7 @@ public class PositionTest {
     public void getCol() {
         Position position = new Position(2, 3);
         int col = 3;
-        assertEquals(col, position.getCol());
+        Assert.assertEquals(col, position.getCol());
 
     }
 }

@@ -2,3 +2,7 @@ Autores:
     Henrique Lopes Nicoletti nrUsp:12745636
     Vitor da Fonseca Rodrigues nrUsp: 13838986
 
+Criar .class:
+	javac -d bin -cp Junit/hamcrest-core-1.3.jar;Junit/junit-4.13.jar *.java
+
+java -cp bin; Junit/hamcres-core-1.3.jar;Junit/junit4.13.jar org.junit.runner.JunitCore CardTest GameImplTest PieceTest PlayerTest PositionTest SpotTest

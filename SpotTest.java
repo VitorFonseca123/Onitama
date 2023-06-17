@@ -1,10 +1,12 @@
 package onitama;
 
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+
 
 class SpotTest {
     private Piece pieces;
@@ -28,9 +30,9 @@ class SpotTest {
         Position expectedPosition = new Position(1, 1);
         Spot spot = new Spot(expectedPosition);
 
-        assertEquals(expectedPosition,spot.getPos());
-        assertNull(spot.getPiece());
-        assertNull(spot.getColor());
+        Assert.assertEquals(expectedPosition,spot.getPos());
+        Assert.assertNull(spot.getPiece());
+        Assert.assertNull(spot.getColor());
     }
     @Test
     void testConstructor_SpotWithPiece() {
@@ -38,9 +40,9 @@ class SpotTest {
         Piece expectedPiece = new Piece(Color.BLUE, false);
         Spot spot = new Spot(expectedPiece,expectedPosition);
 
-        assertEquals(expectedPosition,spot.getPos());
-        assertEquals(expectedPiece,spot.getPiece());
-        assertNull(spot.getColor());
+        Assert.assertEquals(expectedPosition,spot.getPos());
+        Assert.assertEquals(expectedPiece,spot.getPiece());
+        Assert.assertNull(spot.getColor());
     }
     @Test
     void testConstructor_SpotWithBase() {
@@ -49,72 +51,72 @@ class SpotTest {
         Color expectedColor = Color.RED;
         Spot spot = new Spot(expectedPiece,expectedPosition,expectedColor);
 
-        assertEquals(expectedPosition,spot.getPos());
-        assertEquals(expectedPiece,spot.getPiece());
-        assertEquals(expectedColor, spot.getColor());
+        Assert.assertEquals(expectedPosition,spot.getPos());
+        Assert.assertEquals(expectedPiece,spot.getPiece());
+        Assert.assertEquals(expectedColor, spot.getColor());
     }
     @Test
     void getPiece() {
         Piece p = new Piece(Color.RED, true);
-        assertNotEquals(p, spotPiece.getPiece());
-        assertNotEquals(p, spotBase.getPiece());
-        assertNull(spotVazio.getPiece());
+        Assert.assertNotEquals(p, spotPiece.getPiece());
+        Assert.assertNotEquals(p, spotBase.getPiece());
+        Assert.assertNull(spotVazio.getPiece());
 
-        assertEquals(pieces, spotPiece.getPiece());
-        assertEquals(pieces, spotBase.getPiece());
+        Assert.assertEquals(pieces, spotPiece.getPiece());
+        Assert.assertEquals(pieces, spotBase.getPiece());
 
     }
 
     @Test
     void getPos() {
-        assertEquals(positions, spotVazio.getPos());
-        assertEquals(positions, spotBase.getPos());
-        assertEquals(positions, spotPiece.getPos());
+        Assert.assertEquals(positions, spotVazio.getPos());
+        Assert.assertEquals(positions, spotBase.getPos());
+        Assert.assertEquals(positions, spotPiece.getPos());
         Position fakePosition = new Position(1,1);
-        assertNotEquals(fakePosition, spotVazio.getPos());
-        assertNotEquals(fakePosition, spotBase.getPos());
-        assertNotEquals(fakePosition, spotPiece.getPos());
+        Assert.assertNotEquals(fakePosition, spotVazio.getPos());
+        Assert.assertNotEquals(fakePosition, spotBase.getPos());
+        Assert.assertNotEquals(fakePosition, spotPiece.getPos());
 
     }
 
     @Test
     void getColor() {
-        assertNull(spotVazio.getColor());
-        assertNull(spotPiece.getColor());
-        assertEquals(Color.BLUE, spotBase.getColor());
+        Assert.assertNull(spotVazio.getColor());
+        Assert.assertNull(spotPiece.getColor());
+        Assert.assertEquals(Color.BLUE, spotBase.getColor());
     }
 
     @Test
     void occupySpotPiece() {
         spotPiece.occupySpot(piece2);
-        assertNotNull(spotPiece.getPiece());
-        assertEquals(piece2, spotPiece.getPiece());
-        assertThrows(IllegalMovementException.class, () -> spotPiece.occupySpot(piece2));
+        Assert.assertNotNull(spotPiece.getPiece());
+        Assert.assertEquals(piece2, spotPiece.getPiece());
+        Assert.assertThrows(IllegalMovementException.class, () -> spotPiece.occupySpot(piece2));
     }
     @Test
     void occupySpotBase() {
         spotBase.occupySpot(piece2);
-        assertNotNull(spotBase.getPiece());
-        assertEquals(piece2, spotBase.getPiece());
-        assertThrows(IllegalMovementException.class, () -> spotBase.occupySpot(piece2));
+        Assert.assertNotNull(spotBase.getPiece());
+        Assert.assertEquals(piece2, spotBase.getPiece());
+        Assert.assertThrows(IllegalMovementException.class, () -> spotBase.occupySpot(piece2));
     }
     @Test
     void occupySpotVazio() {
         spotVazio.occupySpot(piece2);
-        assertNotNull(spotVazio.getPiece());
-        assertEquals(piece2, spotVazio.getPiece());
-        assertThrows(IllegalMovementException.class, () -> spotVazio.occupySpot(piece2));
+        Assert.assertNotNull(spotVazio.getPiece());
+        Assert.assertEquals(piece2, spotVazio.getPiece());
+        Assert.assertThrows(IllegalMovementException.class, () -> spotVazio.occupySpot(piece2));
     }
 
     @Test
     void releaseSpotBase() {
         spotBase.releaseSpot();
-        assertNull(spotBase.getPiece());
+        Assert.assertNull(spotBase.getPiece());
     }
     @Test
     void releaseSpotPiece() {
         spotPiece.releaseSpot();
-        assertNull(spotPiece.getPiece());
+        Assert.assertNull(spotPiece.getPiece());
     }
 
 }
