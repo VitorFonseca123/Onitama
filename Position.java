@@ -1,10 +1,7 @@
 
 package onitama;
 
-/**
- *
- * @author vitor
- */
+
 public class Position {
     private int row;
     private int col;

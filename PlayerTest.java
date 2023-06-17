@@ -3,6 +3,7 @@ package onitama;
 
 
 //import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ public class PlayerTest {
     private Card[] cards;
     private Card TableCard;
 
-    @BeforeEach
+    @Before
     public void setup() {
         Position[] Tiger = {new Position(-2, 0), new Position(1, 0)};
         Position[] Dragon = {new Position(1, -2), new Position(1, 2), new Position(1, -1),  new Position(1, 1)};

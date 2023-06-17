@@ -1,5 +1,6 @@
 package onitama;
 
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ class GameImplTest {
     GameImpl gameRed = new GameImpl("Red", "Blue", cartasTeste2);
     private Board TestBoard;
 
-    @BeforeEach
+    @Before
     public void setup() {
         TestBoard = new Board();
     }
@@ -252,5 +253,4 @@ class GameImplTest {
         gameRed.makeMove(blue.getCards()[0], new Position(1,0), new Position(3,2));
         assertTrue(gameRed.checkVictory(blue.getPieceColor()));
     }
-
 }
